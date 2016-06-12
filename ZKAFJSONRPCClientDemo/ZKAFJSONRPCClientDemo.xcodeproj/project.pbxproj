@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B5874331D0CF1B4001B8FC7 /* ZKAFJSONRPCClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5874321D0CF1B4001B8FC7 /* ZKAFJSONRPCClient.m */; };
 		5BCE06E51D0CEB2C00E30C9C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCE06E41D0CEB2C00E30C9C /* main.m */; };
 		5BCE06E81D0CEB2C00E30C9C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCE06E71D0CEB2C00E30C9C /* AppDelegate.m */; };
 		5BCE06EB1D0CEB2C00E30C9C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCE06EA1D0CEB2C00E30C9C /* ViewController.m */; };
@@ -19,11 +20,12 @@
 		5BCE071F1D0CEB9800E30C9C /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCE07171D0CEB9800E30C9C /* AFURLRequestSerialization.m */; };
 		5BCE07201D0CEB9800E30C9C /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCE07191D0CEB9800E30C9C /* AFURLResponseSerialization.m */; };
 		5BCE07211D0CEB9800E30C9C /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCE071B1D0CEB9800E30C9C /* AFURLSessionManager.m */; };
-		5BCE07241D0CEB9E00E30C9C /* ZKAFJSONRPCClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCE07231D0CEB9E00E30C9C /* ZKAFJSONRPCClient.m */; };
 		5BCE07281D0CEBD300E30C9C /* MyJSONRPCClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCE07261D0CEBD300E30C9C /* MyJSONRPCClient.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B5874311D0CF1B4001B8FC7 /* ZKAFJSONRPCClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZKAFJSONRPCClient.h; sourceTree = "<group>"; };
+		5B5874321D0CF1B4001B8FC7 /* ZKAFJSONRPCClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZKAFJSONRPCClient.m; sourceTree = "<group>"; };
 		5BCE06E01D0CEB2C00E30C9C /* ZKAFJSONRPCClientDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZKAFJSONRPCClientDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BCE06E41D0CEB2C00E30C9C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5BCE06E61D0CEB2C00E30C9C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -47,8 +49,6 @@
 		5BCE07191D0CEB9800E30C9C /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		5BCE071A1D0CEB9800E30C9C /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		5BCE071B1D0CEB9800E30C9C /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
-		5BCE07221D0CEB9E00E30C9C /* ZKAFJSONRPCClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZKAFJSONRPCClient.h; path = ../ZKAFJSONRPCClient.h; sourceTree = "<group>"; };
-		5BCE07231D0CEB9E00E30C9C /* ZKAFJSONRPCClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZKAFJSONRPCClient.m; path = ../ZKAFJSONRPCClient.m; sourceTree = "<group>"; };
 		5BCE07251D0CEBD300E30C9C /* MyJSONRPCClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyJSONRPCClient.h; sourceTree = "<group>"; };
 		5BCE07261D0CEBD300E30C9C /* MyJSONRPCClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyJSONRPCClient.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -64,11 +64,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B5874301D0CF1B4001B8FC7 /* ZKAFJSONRPCClient */ = {
+			isa = PBXGroup;
+			children = (
+				5B5874311D0CF1B4001B8FC7 /* ZKAFJSONRPCClient.h */,
+				5B5874321D0CF1B4001B8FC7 /* ZKAFJSONRPCClient.m */,
+			);
+			name = ZKAFJSONRPCClient;
+			path = ../ZKAFJSONRPCClient;
+			sourceTree = "<group>";
+		};
 		5BCE06D71D0CEB2C00E30C9C = {
 			isa = PBXGroup;
 			children = (
-				5BCE07221D0CEB9E00E30C9C /* ZKAFJSONRPCClient.h */,
-				5BCE07231D0CEB9E00E30C9C /* ZKAFJSONRPCClient.m */,
+				5B5874301D0CF1B4001B8FC7 /* ZKAFJSONRPCClient */,
 				5BCE070E1D0CEB9800E30C9C /* AFNetworking */,
 				5BCE06E21D0CEB2C00E30C9C /* ZKAFJSONRPCClientDemo */,
 				5BCE06E11D0CEB2C00E30C9C /* Products */,
@@ -200,6 +209,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B5874331D0CF1B4001B8FC7 /* ZKAFJSONRPCClient.m in Sources */,
 				5BCE07211D0CEB9800E30C9C /* AFURLSessionManager.m in Sources */,
 				5BCE06EB1D0CEB2C00E30C9C /* ViewController.m in Sources */,
 				5BCE07281D0CEBD300E30C9C /* MyJSONRPCClient.m in Sources */,
@@ -207,7 +217,6 @@
 				5BCE071D1D0CEB9800E30C9C /* AFNetworkReachabilityManager.m in Sources */,
 				5BCE06E51D0CEB2C00E30C9C /* main.m in Sources */,
 				5BCE071E1D0CEB9800E30C9C /* AFSecurityPolicy.m in Sources */,
-				5BCE07241D0CEB9E00E30C9C /* ZKAFJSONRPCClient.m in Sources */,
 				5BCE071F1D0CEB9800E30C9C /* AFURLRequestSerialization.m in Sources */,
 				5BCE07201D0CEB9800E30C9C /* AFURLResponseSerialization.m in Sources */,
 				5BCE071C1D0CEB9800E30C9C /* AFHTTPSessionManager.m in Sources */,
