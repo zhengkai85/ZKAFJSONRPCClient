@@ -22,7 +22,7 @@
 // THE SOFTWARE.
 
 #import "ZKAFJSONRPCClient.h"
-//#import "NSURLSessionDataTask.h"
+#import "AFNetworking.h"
 
 #import <objc/runtime.h>
 
@@ -53,36 +53,32 @@ static NSString * AFJSONRPCLocalizedErrorMessageForCode(NSInteger code) {
 #pragma mark -
 
 @interface ZKAFJSONRPCClient ()
+@property (nonatomic,strong)AFHTTPSessionManager *manager;
 @end
 
 @implementation ZKAFJSONRPCClient
 
-+ (instancetype)clientWithEndpointURL:(NSURL *)URL {
-    return [[self alloc] initWithEndpointURL:URL];
-}
 
 - (id)initWithEndpointURL:(NSURL *)URL {
     NSParameterAssert(URL);
     
-    self = [super initWithBaseURL:URL];
+
+    self = [super init];
     if (!self) {
         return nil;
     }
     
-    self.requestSerializer = [AFJSONRequestSerializer serializer];
-    [self.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    
-    self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"application/json-rpc", @"application/jsonrequest", nil];
+    self.manager = [[AFHTTPSessionManager alloc] initWithBaseURL:URL];
+    self.manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [self.manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    self.manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"application/json-rpc", @"application/jsonrequest", nil];
     
     self.endpointURL = URL;
     
     return self;
 }
 
-- (void)setURL:(NSURL *)URL {
-    self.endpointURL = URL;
-    
-}
+
 
 - (void)invokeMethod:(NSString *)method
              success:(void (^)(NSURLSessionDataTask *operation, id responseObject))success
@@ -96,27 +92,36 @@ static NSString * AFJSONRPCLocalizedErrorMessageForCode(NSInteger code) {
              success:(void (^)(NSURLSessionDataTask *operation, id responseObject))success
              failure:(void (^)(NSURLSessionDataTask *operation, NSError *error))failure
 {
-    [self invokeMethod:method withParameters:parameters requestId:@(1) success:success failure:failure];
+    [self invokeMethod:method withParameters:parameters  success:success failure:failure];
 }
 
 - (void)invokeMethod:(NSString *)method
       withParameters:(id)parameters
            requestId:(id)requestId
              success:(void (^)(NSURLSessionDataTask *operation, id responseObject))success
+             failure:(void (^)(NSURLSessionDataTask *operation, NSError *error))failure {
+    [self invokeMethod:method withParameters:parameters  interface:@"" success:success failure:failure];
+    
+}
+
+- (void)invokeMethod:(NSString *)method
+      withParameters:(id)parameters
+           interface:(NSString*)interface
+             success:(void (^)(NSURLSessionDataTask *operation, id responseObject))success
              failure:(void (^)(NSURLSessionDataTask *operation, NSError *error))failure
 {
-    
+
     NSMutableDictionary *payload = [NSMutableDictionary dictionary];
     payload[@"jsonrpc"] = @"2.0";
     payload[@"method"] = method;
     payload[@"params"] = @[parameters];
-    payload[@"id"] = @"0";
+    payload[@"id"] = @"1";
     
-    [self POST:[self.endpointURL absoluteString]
-    parameters:payload
-      progress:^(NSProgress * _Nonnull uploadProgress) {
-      }
-       success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [self.manager POST:[[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",self.endpointURL,interface]] absoluteString]
+            parameters:payload
+              progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+      } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
            NSInteger code = 0;
            NSString *message = nil;
            id data = nil;
@@ -197,7 +202,7 @@ static NSString * AFJSONRPCLocalizedErrorMessageForCode(NSInteger code) {
     payload[@"params"] = @[parameters];
     payload[@"id"] = @"0";
     
-    return [self.requestSerializer requestWithMethod:@"POST" URLString:[self.endpointURL absoluteString] parameters:payload error:nil];
+    return [self.manager.requestSerializer requestWithMethod:@"POST" URLString:[self.endpointURL absoluteString] parameters:payload error:nil];
 }
 
 #pragma mark - AFHTTPClient

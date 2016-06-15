@@ -33,7 +33,7 @@ static NSString * const kMyClientURL = @"http://www.domain.com";
                isShowLoad:(BOOL)showLoad
                     block:(void (^)(NSURLSessionDataTask *operation, id posts,NSInteger code,NSString *errorMsg))block {
     
-    self.endpointURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",kMyClientURL,interface]];
+//    self.endpointURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",kMyClientURL,interface]];
     
     
     

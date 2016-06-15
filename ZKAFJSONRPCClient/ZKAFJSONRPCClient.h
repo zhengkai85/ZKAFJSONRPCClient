@@ -21,29 +21,20 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "AFNetworking.h"
-
+#import <Foundation/Foundation.h>
 
 /**
  ZKAFJSONRPCClient objects communicate with web services using the JSON-RPC 2.0 protocol.
  
  @see http://www.jsonrpc.org/specification
  */
-@interface ZKAFJSONRPCClient : AFHTTPSessionManager
+@interface ZKAFJSONRPCClient : NSObject
 
 /**
  The endpoint URL for the webservice.
  */
 @property (readwrite, nonatomic, strong) NSURL *endpointURL;
 
-/**
- Creates and initializes a JSON-RPC client with the specified endpoint.
- 
- @param URL The endpoint URL.
- 
- @return An initialized JSON-RPC client.
- */
-+ (instancetype)clientWithEndpointURL:(NSURL *)URL;
 
 /**
  Initializes a JSON-RPC client with the specified endpoint.
@@ -103,6 +94,17 @@
 - (void)invokeMethod:(NSString *)method
       withParameters:(id)parameters
            requestId:(id)requestId
+             success:(void (^)(NSURLSessionDataTask *operation, id responseObject))success
+             failure:(void (^)(NSURLSessionDataTask *operation, NSError *error))failure;
+
+
+
+/**
+ my new method
+ */
+- (void)invokeMethod:(NSString *)method
+      withParameters:(id)parameters
+           interface:(NSString*)interface
              success:(void (^)(NSURLSessionDataTask *operation, id responseObject))success
              failure:(void (^)(NSURLSessionDataTask *operation, NSError *error))failure;
 
