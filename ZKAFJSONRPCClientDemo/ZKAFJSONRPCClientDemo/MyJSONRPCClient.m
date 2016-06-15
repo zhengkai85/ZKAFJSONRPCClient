@@ -33,16 +33,13 @@ static NSString * const kMyClientURL = @"http://www.domain.com";
                isShowLoad:(BOOL)showLoad
                     block:(void (^)(NSURLSessionDataTask *operation, id posts,NSInteger code,NSString *errorMsg))block {
     
-//    self.endpointURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",kMyClientURL,interface]];
-    
-    
-    
     if(showLoad) {
         // loading 加载 [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:NO];
     }
 
     [self invokeMethod:method
         withParameters:parameters
+             interface:interface 
                success:^(NSURLSessionDataTask *operation, id responseObject) {
                    if(showLoad) {
                        //loading 取消 [MBProgressHUD hideAllHUDsForView:[UIApplication sharedApplication].keyWindow animated:NO];
