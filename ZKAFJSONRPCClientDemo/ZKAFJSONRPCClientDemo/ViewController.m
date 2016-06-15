@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import "MyJSONRPCClient.h"
 @interface ViewController ()
 
 @end
