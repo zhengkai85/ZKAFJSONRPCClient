@@ -24,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B481E5A1D2B4B9300132EC7 /* server.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = server.cer; sourceTree = SOURCE_ROOT; };
 		5B5874311D0CF1B4001B8FC7 /* ZKAFJSONRPCClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZKAFJSONRPCClient.h; sourceTree = "<group>"; };
 		5B5874321D0CF1B4001B8FC7 /* ZKAFJSONRPCClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZKAFJSONRPCClient.m; sourceTree = "<group>"; };
 		5BCE06E01D0CEB2C00E30C9C /* ZKAFJSONRPCClientDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZKAFJSONRPCClientDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,6 +106,7 @@
 				5BCE06EF1D0CEB2C00E30C9C /* Assets.xcassets */,
 				5BCE06F11D0CEB2C00E30C9C /* LaunchScreen.storyboard */,
 				5BCE06F41D0CEB2C00E30C9C /* Info.plist */,
+				5B481E5A1D2B4B9300132EC7 /* server.cer */,
 				5BCE06E31D0CEB2C00E30C9C /* Supporting Files */,
 			);
 			path = ZKAFJSONRPCClientDemo;
