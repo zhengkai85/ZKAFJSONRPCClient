@@ -1,2 +1,2 @@
 # ZKAFJSONRPCClient
-基于AFNetworking 3.0以上版本，jsonrpc 方式与服务端交互
+苹果已经开始强制要求程序必须支持ipv6。并且准备在2017年的1月1日，强制要求使用https协议。为了跟上苹果的脚步，最受全世界程序员欢迎的网络组建库AFNetwork也已经升级到3.0+。为了实际项目的需要，我研发并开源了ZKAFJSONRPCClient组建。组件用于配合最新的AFNetworking，使用了jsonrpc协议，支持ipv6以及https，用于和服务端进行快速安全的网络通信。

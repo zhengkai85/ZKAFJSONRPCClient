@@ -72,12 +72,29 @@ static NSString * AFJSONRPCLocalizedErrorMessageForCode(NSInteger code) {
     self.manager.requestSerializer = [AFJSONRequestSerializer serializer];
     [self.manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     self.manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"application/json-rpc", @"application/jsonrequest", nil];
+    self.manager.securityPolicy = [self customSecurityPolicy];
     
     self.endpointURL = URL;
     
     return self;
 }
 
+- (AFSecurityPolicy*)customSecurityPolicy
+{
+    // /先导入证书
+    NSString *cerPath = [[NSBundle mainBundle] pathForResource:@"server" ofType:@"cer"];//证书的路径
+    NSData *certData = [NSData dataWithContentsOfFile:cerPath];
+    
+    // AFSSLPinningModeCertificate 使用证书验证模式
+    AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate];
+    
+    // allowInvalidCertificates 是否允许无效证书（也就是自建的证书），默认为NO
+    // 如果是需要验证自建证书，需要设置为YES
+    securityPolicy.allowInvalidCertificates = YES;
+    securityPolicy.validatesDomainName = NO;
+    securityPolicy.pinnedCertificates = [NSSet setWithObjects:certData, nil];
+    return securityPolicy;
+}
 
 
 - (void)invokeMethod:(NSString *)method
